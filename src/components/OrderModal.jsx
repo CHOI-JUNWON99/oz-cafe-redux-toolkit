@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import data from '../assets/data'
-import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../redux/redux'
+import { useDispatch /*,useSelector*/ } from 'react-redux'
+import { /*addToCart,*/ cartSlice } from '../redux/redux'
 
 function OrderModal({ modalMenu, setModalOn }) {
     const [options, setOptions] = useState({ '온도': 0, '진하기': 0, '사이즈': 0 })
@@ -38,7 +38,8 @@ function OrderModal({ modalMenu, setModalOn }) {
                                 <input id="count" type="number" value={quantity} min='1' onChange={(event) => setQuantity(Number(event.target.value))} />
                             </div>
                             <button onClick={() => {
-                                dispatch(addToCart(options, quantity, modalMenu.id))
+                                dispatch(cartSlice.actions.addToCart({ options, quantity, id: modalMenu.id })) // 객체로 만들어서 키 이름이 명확해야한다 id키
+                                //dispatch(addToCart(options, quantity, modalMenu.id))
                                 //setCart([...cart, { options, quantity, id: modalMenu.id }])
                                 setModalOn(false)
                             }}>장바구니 넣기</button>

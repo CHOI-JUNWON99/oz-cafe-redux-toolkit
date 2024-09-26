@@ -7,7 +7,8 @@ function Menu() {
   const [modalOn, setModalOn] = useState(false);
   const [modalMenu, setModalMenu] = useState(null);
 
-  const menu = useSelector(state => state.menuReducer)
+  // const menu = useSelector(state => state.menuReducer)
+  const menu = useSelector(state => state.menu)
 
   if (!menu)
     return (
